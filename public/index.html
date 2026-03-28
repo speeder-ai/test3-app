@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{COMPANY_NAME}} — Professional Architectural Drawings Marketplace</title>
+  <meta name="description" content="Buy licensed floor plans, elevation drawings, and construction details from $15–$75. Instant download. Save thousands vs. custom architectural fees." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{COMPANY_NAME}} — Professional Architectural Drawings Marketplace" />
+  <meta property="og:description" content="Buy licensed floor plans, elevation drawings, and construction details from $15–$75. Instant download. Save thousands vs. custom architectural fees." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://{{COMPANY_DOMAIN}}/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{COMPANY_NAME}} — Professional Architectural Drawings Marketplace" />
+  <meta name="twitter:description" content="Buy licensed floor plans, elevation drawings, and construction details from $15–$75. Instant download." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{COMPANY_NAME}}",
+    "description": "{{COMPANY_VISION}}",
+    "url": "https://{{COMPANY_DOMAIN}}",
+    "email": "{{COMPANY_EMAIL}}",
+    "logo": "{{COMPANY_LOGO}}"
+  }
+  </script>
+
+  <style>
+    /* ─── Reset & Custom Properties ─────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary:        #1A1A1A;
+      --primary-dark:   #000000;
+      --primary-light:  #333333;
+      --accent:         #1A1A1A;
+      --bg:             #FAFAF8;
+      --bg-alt:         #F3F3F0;
+      --text:           #1A1A1A;
+      --text-light:     #8A8A85;
+      --text-on-primary:#FAFAF8;
+
+      --background:     #FAFAF8;
+      --foreground:     #1A1A1A;
+      --on-primary:     #FAFAF8;
+      --card:           #FAFAF8;
+      --muted:          #F3F3F0;
+      --border:         #E5E5E0;
+
+      --font-heading:   'Instrument Serif', Georgia, serif;
+      --font-body:      'Inter', system-ui, sans-serif;
+
+      --ease-smooth:    cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-snappy:    cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────────── */
+    .reveal {
+      transform: translateY(24px);
+      transition: transform 0.8s var(--ease-smooth);
+    }
+    .reveal.visible {
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Hero Entrance Animation ────────────────────────── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-animate {
+      animation: heroFadeUp 1s var(--ease-smooth) both;
+    }
+    .stagger-1 { animation-delay: 0.15s; }
+    .stagger-2 { animation-delay: 0.3s; }
+    .stagger-3 { animation-delay: 0.45s; }
+    .stagger-4 { animation-delay: 0.6s; }
+    .stagger-5 { animation-delay: 0.75s; }
+
+    /* ─── Navigation ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s var(--ease-snappy);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text);
+    }
+
+    /* ─── Hero Section ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 120px;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    .hero-headline {
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 14ch;
+      margin-bottom: 48px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--text-light);
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 38ch;
+      font-weight: 300;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .hero-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .hero-cta-link:hover {
+      opacity: 0.5;
+    }
+
+    .hero-price-note {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── Email Capture (Waitlist Form) ──────────────────── */
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .waitlist-row {
+      display: flex;
+      gap: 0;
+    }
+
+    .waitlist-input {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-right: none;
+      padding: 11px 16px;
+      outline: none;
+      width: 220px;
+      transition: border-color 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .waitlist-input::placeholder {
+      color: var(--text-light);
+    }
+
+    .waitlist-input:focus {
+      border-color: var(--text);
+    }
+
+    .waitlist-btn {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--on-primary);
+      background: var(--text);
+      border: 1px solid var(--text);
+      padding: 11px 20px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .waitlist-btn:hover {
+      opacity: 0.75;
+    }
+
+    .waitlist-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .waitlist-note {
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Services Section ───────────────────────────────── */
+    .services {
+      border-top: 1px solid var(--border);
+      padding: 120px 48px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 80px;
+      gap: 48px;
+    }
+
+    .services-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      flex-shrink: 0;
+      padding-top: 6px;
+    }
+
+    .services-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 16ch;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .service-item {
+      border-top: 1px solid var(--border);
+      padding: 48px 40px 48px 0;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 24px;
+      align-items: start;
+      transition: background 0.2s;
+    }
+
+    .service-item:nth-child(even) {
+      padding-left: 40px;
+      padding-right: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .service-num {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      padding-top: 5px;
+    }
+
+    .service-content h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .service-content p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-light);
+      font-weight: 300;
+      max-width: 38ch;
+    }
+
+    .service-price {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+    }
+
+    /* ─── About Section ──────────────────────────────────── */
+    .about {
+      border-top: 1px solid var(--border);
+      padding: 120px 48px;
+      background: var(--bg-alt);
+    }
+
+    .about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      padding-top: 6px;
+    }
+
+    .about-body {
+      max-width: 64ch;
+    }
+
+    .about-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .about-body p:first-child {
+      font-size: 20px;
+      line-height: 1.65;
+      color: var(--text);
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .pull-quote {
+      border-left: 1px solid var(--text);
+      margin: 48px 0;
+      padding: 0 0 0 32px;
+    }
+
+    .pull-quote blockquote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 56px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
+      background: var(--bg);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-light);
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero {
+        padding: 0 32px 96px;
+      }
+      .services,
+      .services-header {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .about {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .about-inner {
+        grid-template-columns: 200px 1fr;
+        gap: 48px;
+      }
+      footer {
+        padding: 40px 32px;
+      }
+      .nav-inner {
+        padding: 18px 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--bg);
+        z-index: 99;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu a {
+        font-size: 28px;
+        font-family: var(--font-heading);
+        color: var(--text);
+      }
+
+      .mobile-close {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--text);
+      }
+
+      .hero {
+        min-height: 100svh;
+        padding: 0 24px 80px;
+        justify-content: flex-end;
+      }
+
+      .hero-headline {
+        font-size: clamp(2.8rem, 12vw, 4.5rem);
+        margin-bottom: 40px;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        padding-top: 32px;
+      }
+
+      .hero-right {
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .waitlist-row {
+        width: 100%;
+      }
+
+      .waitlist-input {
+        width: 100%;
+        flex: 1;
+      }
+
+      .services {
+        padding: 80px 24px;
+      }
+
+      .services-header {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 48px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-item {
+        padding: 40px 0;
+        grid-template-columns: 40px 1fr;
+        gap: 16px;
+      }
+
+      .service-item:nth-child(even) {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .about {
+        padding: 80px 24px;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-stats {
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      footer {
+        padding: 40px 24px;
+      }
+
+      .nav-inner {
+        padding: 16px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline {
+        font-size: clamp(2.4rem, 11vw, 3.5rem);
+      }
+    }
+
+    /* ─── Reduced Motion ─────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="{{COMPANY_NAME}} home">
+        {{COMPANY_NAME}}
+      </a>
+      <div class="nav-links">
+        <a href="#drawings">Drawings</a>
+        <a href="#about">About</a>
+        <a href="mailto:{{COMPANY_EMAIL}}">Contact</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.add('open')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <line x1="3" y1="7" x2="21" y2="7"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="17" x2="21" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button class="mobile-close" aria-label="Close menu" onclick="document.getElementById('mobile-menu').classList.remove('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <line x1="4" y1="4" x2="20" y2="20"/>
+        <line x1="20" y1="4" x2="4" y2="20"/>
+      </svg>
+    </button>
+    <a href="#drawings" onclick="document.getElementById('mobile-menu').classList.remove('open')">Drawings</a>
+    <a href="#about" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
+    <a href="mailto:{{COMPANY_EMAIL}}" onclick="document.getElementById('mobile-menu').classList.remove('open')">Contact</a>
+  </div>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════ -->
+  <main>
+    <section class="hero" aria-label="Hero">
+
+      <p class="hero-eyebrow hero-animate" aria-label="Category">
+        Architectural &amp; Interior Design Drawings
+      </p>
+
+      <h1 class="hero-headline hero-animate stagger-1">
+        Professional plans, <em>instant</em> download.
+      </h1>
+
+      <div class="hero-bottom hero-animate stagger-2">
+        <p class="hero-sub">
+          Licensed floor plans, elevation drawings, and construction details from $15–$75 per file. Skip the $5,000 custom fee — download exactly what you need today.
+        </p>
+
+        <div class="hero-right">
+          <!-- Email Capture / Waitlist Form -->
+          <form class="waitlist-form" id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" aria-label="Join early access waitlist">
+            <div class="waitlist-row">
+              <input
+                class="waitlist-input"
+                type="email"
+                id="waitlist-email"
+                placeholder="Your email address"
+                required
+                autocomplete="email"
+                aria-label="Email address"
+              />
+              <button class="waitlist-btn" type="submit" id="waitlist-btn" aria-label="Get early access">
+                Get Early Access
+              </button>
+            </div>
+            <span class="waitlist-note" aria-live="polite" id="waitlist-status">
+              Be the first to browse the collection.
+            </span>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══ SERVICES / DRAWING TYPES ════════════════════════ -->
+    <section class="services" id="drawings" aria-labelledby="services-heading">
+
+      <div class="services-header reveal">
+        <span class="services-label" aria-hidden="true">01 — Collection</span>
+        <h2 class="services-title" id="services-heading">
+          Every drawing type your project demands
+        </h2>
+      </div>
+
+      <div class="services-grid" role="list">
+
+        <!-- Floor Plans -->
+        <div class="service-item reveal" role="listitem">
+          <span class="service-num" aria-hidden="true">01</span>
+          <div class="service-content">
+            <h3>Floor Plans</h3>
+            <p>
+              Dimensioned, permit-ready floor plans for residential and light commercial spaces. From studio layouts to multi-story homes — scaled and annotated to professional standards.
+            </p>
+            <span class="service-price">From $15 per file</span>
+          </div>
+        </div>
+
+        <!-- Elevation Drawings -->
+        <div class="service-item reveal reveal-delay-1" role="listitem">
+          <span class="service-num" aria-hidden="true">02</span>
+          <div class="service-content">
+            <h3>Elevation Drawings</h3>
+            <p>
+              Interior and exterior elevations that translate your vision into buildable detail. Kitchen cabinetry, bathroom layouts, façade studies — ready to hand off to your contractor.
+            </p>
+            <span class="service-price">From $20 per file</span>
+          </div>
+        </div>
+
+        <!-- Construction Details -->
+        <div class="service-item reveal reveal-delay-1" role="listitem">
+          <span class="service-num" aria-hidden="true">03</span>
+          <div class="service-content">
+            <h3>Construction Details</h3>
+            <p>
+              Section cuts, connection details, and material call-outs that contractors trust. Reduce RFIs, prevent costly site errors, and build with confidence from day one.
+            </p>
+            <span class="service-price">From $25 per file</span>
+          </div>
+        </div>
+
+        <!-- Renovation Bundles -->
+        <div class="service-item reveal reveal-delay-2" role="listitem">
+          <span class="service-num" aria-hidden="true">04</span>
+          <div class="service-content">
+            <h3>Renovation Bundles</h3>
+            <p>
+              Curated drawing sets for the most common renovation scopes — kitchen remodels, bathroom additions, ADU conversions. Everything you need in a single download, priced for real budgets.
+            </p>
+            <span class="service-price">From $49 per bundle</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ══════════════════════════════════════════ -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about-inner">
+
+        <span class="about-label reveal" aria-hidden="true">02 — About</span>
+
+        <div class="about-body">
+          <p class="reveal reveal-delay-1">
+            Custom architectural drawings cost between $2,000 and $10,000 — often for projects that don't justify the fee. {{COMPANY_NAME}} changes that equation entirely.
+          </p>
+
+          <p class="reveal reveal-delay-2">
+            We've built a curated library of professionally-vetted drawings — reviewed by licensed architects, organized by project type, and priced for real budgets. Every file is ready to download the moment you purchase it.
+          </p>
+
+          <div class="pull-quote reveal reveal-delay-2">
+            <blockquote>
+              "Architectural quality shouldn't be a privilege of large budgets."
+            </blockquote>
+          </div>
+
+          <p class="reveal reveal-delay-3">
+            Whether you're an architect needing a reference detail, a contractor pricing a renovation, or a homeowner planning a kitchen remodel, you'll find exactly what you need — instantly, affordably, professionally.
+          </p>
+
+          <div class="about-stats reveal reveal-delay-3">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Licensed drawings</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">$15</span>
+              <span class="stat-label">Starting price</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Instant download</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-logo">{{COMPANY_NAME}}</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#drawings">Collection</a>
+        <a href="#about">About</a>
+        <a href="mailto:{{COMPANY_EMAIL}}">Contact</a>
+      </nav>
+      <span class="footer-copy">&copy; 2026 {{COMPANY_NAME}}. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════════ -->
+  <script>
+    // ─── Scroll Reveal Observer ─────────────────────────────
+    (function() {
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -16px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    })();
+
+    // ─── Waitlist Form ──────────────────────────────────────
+    async function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      var email = document.getElementById('waitlist-email').value.trim();
+      var btn = document.getElementById('waitlist-btn');
+      var status = document.getElementById('waitlist-status');
+
+      if (!email) return;
+
+      btn.textContent = 'Joining...';
+      btn.disabled = true;
+
+      try {
+        var res = await fetch('/api/leads/collect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            slug: 'test3',
+            source_page: 'home'
+          })
+        });
+        var data = await res.json();
+
+        if (data.success) {
+          btn.textContent = 'You\'re on the list';
+          document.getElementById('waitlist-email').style.display = 'none';
+          status.textContent = 'We\'ll be in touch when the collection launches.';
+        } else {
+          btn.textContent = 'Try Again';
+          btn.disabled = false;
+          status.textContent = 'Something went wrong. Please try again.';
+        }
+      } catch (err) {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        status.textContent = 'Something went wrong. Please try again.';
+      }
+    }
+
+    // ─── Nav shrink on scroll ───────────────────────────────
+    (function() {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 60) {
+          nav.style.borderBottomColor = 'rgba(229,229,224,0.8)';
+        } else {
+          nav.style.borderBottomColor = '';
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
