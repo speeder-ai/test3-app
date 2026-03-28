@@ -6,7 +6,7 @@
   <title>{{COMPANY_NAME}} — Licensed Architectural Drawings, Instant Download</title>
   <meta name="description" content="Buy professionally-vetted floor plans, elevation drawings & construction details from $15–$75. Instant download. Skip the $5,000+ architect fee for small projects." />
 
-  <!-- Open Graph -->
+  <!-- Open Graph tags for social sharing -->
   <meta property="og:title" content="{{COMPANY_NAME}} — Licensed Architectural Drawings, Instant Download" />
   <meta property="og:description" content="Curated marketplace for licensed floor plans, elevation drawings, and construction details. $15–$75 per file. Download instantly." />
   <meta property="og:type" content="website" />
@@ -16,12 +16,12 @@
   <meta name="twitter:title" content="{{COMPANY_NAME}} — Licensed Architectural Drawings" />
   <meta name="twitter:description" content="Floor plans, elevation drawings & construction details from $15–$75. Instant download." />
 
-  <!-- Fonts -->
+  <!-- Google Fonts: Instrument Serif (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  <!-- Structured Data -->
+  <!-- JSON-LD structured data for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,7 +42,10 @@
   </script>
 
   <style>
-    /* ─── Reset & Custom Properties ─────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       RESET & CSS CUSTOM PROPERTIES
+       Minimal & Editorial design system: monochrome, flat, typographic
+    ───────────────────────────────────────────────────────────── */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -50,30 +53,34 @@
     }
 
     :root {
-      --primary:         #1A1A1A;
-      --primary-dark:    #000000;
-      --primary-light:   #333333;
-      --accent:          #1A1A1A;
-      --bg:              #FAFAF8;
-      --bg-alt:          #F3F3F0;
-      --bg-dark:         #111110;
-      --text:            #1A1A1A;
-      --text-light:      #8A8A85;
-      --text-on-primary: #FAFAF8;
+      /* Color system — monochrome warm palette */
+      --primary:          #1A1A1A;
+      --primary-dark:     #000000;
+      --primary-light:    #333333;
+      --accent:           #1A1A1A;
+      --bg:               #FAFAF8;   /* warm off-white, never pure #fff */
+      --bg-alt:           #F3F3F0;
+      --bg-dark:          #111110;   /* near-black for contrast sections */
+      --text:             #1A1A1A;
+      --text-light:       #8A8A85;
+      --text-on-primary:  #FAFAF8;
 
-      --background:      #FAFAF8;
-      --foreground:      #1A1A1A;
-      --on-primary:      #FAFAF8;
-      --card:            #FAFAF8;
-      --muted:           #F3F3F0;
-      --border:          #E5E5E0;
+      /* Semantic aliases used by components */
+      --background:       #FAFAF8;
+      --foreground:       #1A1A1A;
+      --on-primary:       #FAFAF8;
+      --card:             #FAFAF8;
+      --muted:            #F3F3F0;
+      --border:           #E5E5E0;
 
-      --font-heading:    'Instrument Serif', Georgia, serif;
-      --font-body:       'Inter', system-ui, sans-serif;
+      /* Typography */
+      --font-heading:     'Instrument Serif', Georgia, serif;
+      --font-body:        'Inter', system-ui, sans-serif;
 
-      --ease-smooth:     cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-snappy:     cubic-bezier(0.22, 0.61, 0.36, 1);
-      --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+      /* Easing curves (spring-inspired) */
+      --ease-smooth:      cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-snappy:      cubic-bezier(0.22, 0.61, 0.36, 1);
+      --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     html {
@@ -87,10 +94,12 @@
       font-family: var(--font-body);
       font-weight: 400;
       line-height: 1.6;
+      /* Smooth font rendering on all platforms */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* All headings use the serif heading font */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
       font-weight: 400;
@@ -100,40 +109,59 @@
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* ─── Scroll Reveal ─────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       SCROLL REVEAL ANIMATION
+       Uses translateY ONLY — content stays visible even if JS fails
+       (no opacity:0 on .reveal — content is always readable)
+    ───────────────────────────────────────────────────────────── */
     .reveal {
-      transform: translateY(20px);
+      transform: translateY(22px);
       transition: transform 0.8s var(--ease-smooth);
     }
     .reveal.visible { transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ─── Hero Entrance ──────────────────────────────────────── */
+    /* Staggered child delays for cascade effect */
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.42s; }
+
+    /* ─────────────────────────────────────────────────────────────
+       HERO ENTRANCE ANIMATION
+       CSS @keyframes — no JS dependency, fires immediately on load
+    ───────────────────────────────────────────────────────────── */
     @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(28px); }
+      from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-animate { animation: heroFadeUp 0.9s var(--ease-smooth) both; }
+    .hero-animate {
+      animation: heroFadeUp 0.9s var(--ease-smooth) both;
+    }
+    /* Stagger delays for sequential hero entrance */
     .stagger-1 { animation-delay: 0.12s; }
-    .stagger-2 { animation-delay: 0.24s; }
-    .stagger-3 { animation-delay: 0.36s; }
-    .stagger-4 { animation-delay: 0.5s; }
-    .stagger-5 { animation-delay: 0.64s; }
+    .stagger-2 { animation-delay: 0.26s; }
+    .stagger-3 { animation-delay: 0.40s; }
+    .stagger-4 { animation-delay: 0.55s; }
+    .stagger-5 { animation-delay: 0.70s; }
 
-    /* ─── Navigation ─────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       SECTION 1: NAVIGATION
+       Sticky glassmorphism nav — logo + 3 text links only, no CTA button
+    ───────────────────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
+      /* Translucent background with blur for glassmorphism */
       background: rgba(250, 250, 248, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       transition: all 0.3s var(--ease-snappy);
     }
+
+    /* Nav transitions to slightly smaller padding when scrolled */
+    nav.scrolled .nav-inner { padding-top: 14px; padding-bottom: 14px; }
 
     .nav-inner {
       max-width: 1280px;
@@ -142,6 +170,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: padding 0.3s var(--ease-snappy);
     }
 
     .nav-logo {
@@ -152,6 +181,7 @@
       letter-spacing: -0.02em;
     }
 
+    /* Desktop nav links — text-only, muted, hover to full color */
     .nav-links {
       display: flex;
       gap: 40px;
@@ -168,6 +198,7 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    /* Hamburger button — hidden on desktop, shown on mobile */
     .mobile-toggle {
       display: none;
       background: none;
@@ -177,7 +208,10 @@
       color: var(--text);
     }
 
-    /* ─── Mobile Menu ────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       MOBILE MENU OVERLAY
+       Full-screen overlay with large serif links
+    ───────────────────────────────────────────────────────────── */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -187,15 +221,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 44px;
     }
 
     .mobile-menu.open { display: flex; }
 
     .mobile-menu a {
-      font-size: 26px;
+      font-size: 28px;
       font-family: var(--font-heading);
+      font-weight: 400;
       color: var(--text);
+      letter-spacing: -0.01em;
     }
 
     .mobile-close {
@@ -206,68 +242,79 @@
       font-size: 28px;
       cursor: pointer;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
     }
 
-    /* ─── SECTION 1: Hero ────────────────────────────────────── */
-    .hero-wrap {
+    /* ─────────────────────────────────────────────────────────────
+       SECTION 2: HERO
+       Text-Bold editorial pattern: oversized serif headline
+       Split bottom row: sub-copy left, email capture right
+    ───────────────────────────────────────────────────────────── */
+    .hero-section {
+      /* Full viewport height so the headline fills the screen */
       min-height: 100vh;
+      display: flex;
+      align-items: flex-end; /* anchor content to bottom */
+    }
+
+    .hero-wrap {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 0 48px 0;
-      max-width: 1280px;
-      margin: 0 auto;
-      position: relative;
     }
 
-    /* Thin horizontal rule above hero content — architectural feel */
-    .hero-rule {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 0;
-    }
-
+    /* Small uppercase eyebrow above headline */
     .hero-eyebrow {
       font-family: var(--font-body);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-light);
-      padding-top: 80px;
-      margin-bottom: 36px;
+      padding-top: 88px;
+      margin-bottom: 38px;
     }
 
+    /* The hero's centerpiece: oversized serif headline using clamp() for fluid scaling */
     .hero-headline {
       font-size: clamp(3.2rem, 8.5vw, 7.5rem);
       line-height: 0.97;
       letter-spacing: -0.025em;
       color: var(--text);
-      max-width: 13ch;
+      max-width: 14ch;       /* ~14 characters per line for natural breaks */
       margin-bottom: 0;
     }
 
+    /* Italic weight used for editorial contrast within headline */
     .hero-headline em {
       font-style: italic;
       color: var(--text-light);
     }
 
+    /* Two-column bottom row: sub-copy + email capture */
     .hero-bottom-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: end;
-      padding: 48px 0 80px;
+      padding: 52px 0 80px;
       border-top: 1px solid var(--border);
       margin-top: 56px;
     }
 
+    /* Sub-copy: readable 16px with generous line-height */
     .hero-sub {
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--text-light);
-      max-width: 40ch;
+      max-width: 42ch;
       font-weight: 300;
     }
 
@@ -276,6 +323,7 @@
       font-weight: 500;
     }
 
+    /* Right column stacks form + pricing strip */
     .hero-right-col {
       display: flex;
       flex-direction: column;
@@ -283,9 +331,13 @@
       align-items: flex-start;
     }
 
-    /* ─── Waitlist Form ──────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       EMAIL CAPTURE / WAITLIST FORM
+       Posts to /api/leads/collect — error + loading states handled in JS
+    ───────────────────────────────────────────────────────────── */
     .waitlist-form { width: 100%; }
 
+    /* Side-by-side input + button on desktop */
     .waitlist-row {
       display: flex;
       width: 100%;
@@ -298,13 +350,14 @@
       color: var(--text);
       background: transparent;
       border: 1px solid var(--border);
-      border-right: none;
+      border-right: none;           /* merged with button */
       padding: 13px 16px;
       outline: none;
       flex: 1;
       min-width: 0;
       letter-spacing: 0.01em;
       transition: border-color 0.2s;
+      /* No border-radius — sharp edges per minimal style */
     }
 
     .waitlist-input::placeholder { color: var(--text-light); }
@@ -312,39 +365,42 @@
 
     .waitlist-btn {
       font-family: var(--font-body);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       color: var(--on-primary);
       background: var(--text);
       border: 1px solid var(--text);
       padding: 13px 22px;
       cursor: pointer;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
       transition: opacity 0.2s;
       flex-shrink: 0;
     }
 
-    .waitlist-btn:hover { opacity: 0.7; }
+    .waitlist-btn:hover { opacity: 0.70; }
     .waitlist-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
+    /* Helper text below form */
     .waitlist-note {
       font-size: 11px;
       color: var(--text-light);
       letter-spacing: 0.03em;
+      line-height: 1.5;
     }
 
+    /* Pricing micro-stats strip */
     .hero-pricing-strip {
       display: flex;
       gap: 32px;
-      padding-top: 4px;
+      padding-top: 8px;
     }
 
     .hero-pricing-item {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
     }
 
     .hero-pricing-value {
@@ -352,16 +408,20 @@
       font-size: 22px;
       letter-spacing: -0.02em;
       color: var(--text);
+      line-height: 1;
     }
 
     .hero-pricing-label {
-      font-size: 11px;
-      letter-spacing: 0.06em;
+      font-size: 10px;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--text-light);
     }
 
-    /* ─── SECTION 2: Services ────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       SECTION 3: SERVICES / DRAWING TYPES
+       Two-column text layout with hairline borders — no cards, no shadows
+    ───────────────────────────────────────────────────────────── */
     .services-section {
       border-top: 1px solid var(--border);
       padding: 100px 48px;
@@ -369,6 +429,7 @@
       margin: 0 auto;
     }
 
+    /* Section header: label column + heading column */
     .services-header {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -377,11 +438,12 @@
       margin-bottom: 72px;
     }
 
+    /* Reusable small-caps section label */
     .section-label {
       font-family: var(--font-body);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-light);
       padding-top: 8px;
@@ -394,12 +456,14 @@
       max-width: 22ch;
     }
 
+    /* 2-column grid, items divided by hairline borders */
     .services-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-top: 1px solid var(--border);
     }
 
+    /* Each service row: number + content, separated by hairline borders */
     .service-item {
       padding: 52px 48px 52px 0;
       border-bottom: 1px solid var(--border);
@@ -410,24 +474,22 @@
       transition: background 0.25s;
     }
 
+    /* Restrained hover: background shift only, no transform/shadow */
     .service-item:hover { background: var(--bg-alt); }
 
+    /* Even items (right column): add left border + left padding */
     .service-item:nth-child(even) {
       padding-left: 48px;
       padding-right: 0;
       border-left: 1px solid var(--border);
     }
 
-    .service-item:nth-child(odd):last-child,
-    .service-item:nth-child(even):last-child {
-      border-bottom: none;
-    }
-
-    /* Remove bottom border from last two items */
+    /* Remove bottom border from the last row of items */
     .service-item:nth-last-child(-n+2) {
       border-bottom: none;
     }
 
+    /* Small index number */
     .svc-num {
       font-family: var(--font-body);
       font-size: 10px;
@@ -449,13 +511,14 @@
 
     .svc-content p {
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--text-light);
       font-weight: 300;
       max-width: 36ch;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
+    /* Price tag: text link style with thin underline */
     .svc-price-tag {
       display: inline-flex;
       align-items: center;
@@ -470,9 +533,13 @@
       padding-bottom: 3px;
     }
 
-    /* ─── SECTION 3: About ───────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       SECTION 4: ABOUT
+       Dark background (var(--bg-dark)) for strong contrast with hero/services
+       Single-column editorial long-form text with pull-quote
+    ───────────────────────────────────────────────────────────── */
     .about-section {
-      background: var(--bg-dark);
+      background: var(--bg-dark);     /* near-black contrast section */
       padding: 100px 48px;
     }
 
@@ -485,6 +552,7 @@
       align-items: start;
     }
 
+    /* Left sidebar: label + sidebar quote */
     .about-label-col {
       display: flex;
       flex-direction: column;
@@ -492,56 +560,60 @@
       padding-top: 8px;
     }
 
+    /* Override section-label color on dark bg */
     .about-section .section-label {
-      color: rgba(250, 250, 248, 0.4);
+      color: rgba(250, 250, 248, 0.40);
     }
 
+    /* Sidebar italic quote — visible on desktop, hidden on mobile */
     .about-sidebar-quote {
       font-family: var(--font-heading);
       font-style: italic;
       font-size: 15px;
-      line-height: 1.65;
-      color: rgba(250, 250, 248, 0.45);
+      line-height: 1.7;
+      color: rgba(250, 250, 248, 0.42);
       letter-spacing: -0.01em;
       max-width: 20ch;
     }
 
-    .about-body {}
-
+    /* Lead paragraph: large serif in warm white */
     .about-lead {
       font-family: var(--font-heading);
       font-size: clamp(1.4rem, 2.5vw, 2rem);
-      line-height: 1.4;
+      line-height: 1.45;
       color: var(--text-on-primary);
       letter-spacing: -0.015em;
       margin-bottom: 40px;
       font-weight: 400;
     }
 
+    /* Body paragraphs: muted on dark background */
     .about-body-text {
       font-size: 15px;
-      line-height: 1.9;
-      color: rgba(250, 250, 248, 0.55);
+      line-height: 1.95;
+      color: rgba(250, 250, 248, 0.52);
       font-weight: 300;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       max-width: 58ch;
     }
 
+    /* Pull-quote: left border hairline + large italic serif */
     .pull-quote {
-      border-left: 1px solid rgba(250, 250, 248, 0.25);
-      margin: 48px 0;
+      border-left: 1px solid rgba(250, 250, 248, 0.22);
+      margin: 52px 0;
       padding: 0 0 0 32px;
     }
 
     .pull-quote blockquote {
       font-family: var(--font-heading);
       font-style: italic;
-      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.85rem);
       line-height: 1.45;
       letter-spacing: -0.01em;
       color: var(--text-on-primary);
     }
 
+    /* Stats row at bottom of about section */
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -566,24 +638,30 @@
       padding-left: 40px;
     }
 
+    /* Large serif number */
     .stat-number {
       font-family: var(--font-heading);
       font-size: clamp(2rem, 4vw, 3.2rem);
       letter-spacing: -0.03em;
       color: var(--text-on-primary);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
+    /* Small-caps label below stat */
     .stat-label {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
-      color: rgba(250, 250, 248, 0.4);
-      letter-spacing: 0.05em;
+      color: rgba(250, 250, 248, 0.38);
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    /* ─── SECTION 4: Footer ──────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       SECTION 5: FOOTER
+       Minimal: logo + copyright + 2-3 links only
+       MUST be the last element in <body>
+    ───────────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       padding: 48px;
@@ -628,31 +706,36 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── Responsive ─────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────
+       RESPONSIVE BREAKPOINTS
+       Mobile-first: tablet at 1024px, phone at 768px, small phone at 480px
+    ───────────────────────────────────────────────────────────── */
+
+    /* Tablet: tighten horizontal padding */
     @media (max-width: 1024px) {
-      .nav-inner { padding: 18px 32px; }
-      .hero-wrap { padding: 0 32px; }
-      .services-section { padding: 80px 32px; }
-      .about-section { padding: 80px 32px; }
-      footer { padding: 40px 32px; }
-      .services-header { grid-template-columns: 160px 1fr; gap: 48px; }
+      .nav-inner          { padding: 18px 32px; }
+      .hero-wrap          { padding: 0 32px; }
+      .services-section   { padding: 80px 32px; }
+      .about-section      { padding: 80px 32px; }
+      footer              { padding: 40px 32px; }
+      .services-header    { grid-template-columns: 160px 1fr; gap: 48px; }
     }
 
+    /* Phone (768px): stack all multi-column grids, show hamburger */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-toggle { display: block; }
+      /* Hide desktop nav links, show hamburger toggle */
+      .nav-links      { display: none; }
+      .mobile-toggle  { display: block; }
 
-      .hero-wrap {
-        padding: 0 24px;
-        min-height: 100svh;
-      }
+      /* Hero: full viewport height using svh for Safari compatibility */
+      .hero-section   { min-height: 100svh; }
+      .hero-wrap      { padding: 0 24px; }
+      .hero-eyebrow   { padding-top: 100px; margin-bottom: 28px; }
 
-      .hero-eyebrow { padding-top: 100px; margin-bottom: 28px; }
+      /* Headline scales down on mobile */
+      .hero-headline  { font-size: clamp(2.8rem, 13vw, 4.5rem); }
 
-      .hero-headline {
-        font-size: clamp(2.8rem, 13vw, 4.5rem);
-      }
-
+      /* Stack hero bottom row to single column */
       .hero-bottom-row {
         grid-template-columns: 1fr;
         gap: 36px;
@@ -660,8 +743,10 @@
         margin-top: 40px;
       }
 
+      /* Hide pricing strip on small screens to reduce clutter */
       .hero-pricing-strip { display: none; }
 
+      /* Services: full-width, single column */
       .services-section { padding: 72px 24px; }
 
       .services-header {
@@ -670,51 +755,47 @@
         margin-bottom: 48px;
       }
 
-      .services-grid {
-        grid-template-columns: 1fr;
-        border-top: 1px solid var(--border);
-      }
+      /* Services grid collapses to single column */
+      .services-grid { grid-template-columns: 1fr; }
 
       .service-item {
         padding: 40px 0;
         grid-template-columns: 32px 1fr;
         gap: 16px;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--border) !important;
       }
 
+      /* Remove the left border on even items (no longer beside odd items) */
       .service-item:nth-child(even) {
         border-left: none;
         padding-left: 0;
+        padding-right: 0;
       }
 
-      .service-item:nth-last-child(-n+2) {
-        border-bottom: 1px solid var(--border);
-      }
+      /* Last item has no bottom border */
+      .service-item:last-child { border-bottom: none !important; }
 
-      .service-item:last-child {
-        border-bottom: none;
-      }
+      /* About: single column layout */
+      .about-section  { padding: 72px 24px; }
+      .about-inner    { grid-template-columns: 1fr; gap: 40px; }
 
-      .about-section { padding: 72px 24px; }
-
-      .about-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about-label-col { flex-direction: row; gap: 32px; }
+      /* On mobile, show label + hide sidebar quote */
+      .about-label-col    { flex-direction: row; gap: 32px; }
       .about-sidebar-quote { display: none; }
 
+      /* About stats: 2 columns on mobile */
       .about-stats {
         grid-template-columns: 1fr 1fr;
         gap: 32px;
       }
 
+      /* Remove dividers from stats on mobile (no longer in a row) */
       .stat-item {
-        padding: 0;
+        padding: 0 !important;
         border: none !important;
       }
 
+      /* Footer: stack to column on mobile */
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -722,18 +803,26 @@
       }
 
       .footer-links { flex-wrap: wrap; gap: 16px; }
-      footer { padding: 36px 24px; }
-      .nav-inner { padding: 16px 24px; }
+      footer        { padding: 36px 24px; }
+      .nav-inner    { padding: 16px 24px; }
     }
 
+    /* Small phones (480px): form stacks to two rows */
     @media (max-width: 480px) {
       .hero-headline { font-size: clamp(2.5rem, 12vw, 3.5rem); }
-      .waitlist-row { flex-direction: column; }
-      .waitlist-input { border-right: 1px solid var(--border); border-bottom: none; }
+
+      /* Stack input and button on very small screens */
+      .waitlist-row {
+        flex-direction: column;
+      }
+      .waitlist-input {
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+      }
       .waitlist-btn { padding: 13px 16px; }
     }
 
-    /* ─── Reduced Motion ─────────────────────────────────────── */
+    /* Accessibility: respect system reduce-motion preference */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -744,118 +833,171 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════
+  <!-- ═══════════════════════════════════════════════════════════
        SECTION 1: NAVIGATION
-  ════════════════════════════════════════════════════════ -->
-  <nav role="navigation" aria-label="Main navigation">
+       Sticky glassmorphism nav.
+       Per style guide: text-only links, logo only, NO CTA button.
+  ═══════════════════════════════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Main navigation" id="main-nav">
     <div class="nav-inner">
+
+      <!-- Brand wordmark -->
       <a href="/" class="nav-logo" aria-label="{{COMPANY_NAME}} home">
         {{COMPANY_NAME}}
       </a>
-      <div class="nav-links">
-        <a href="#drawings">Drawings</a>
-        <a href="#about">About</a>
-        <a href="mailto:{{COMPANY_EMAIL}}">Contact</a>
+
+      <!-- Desktop: 3 text links (no button) -->
+      <div class="nav-links" role="list">
+        <a href="#drawings" role="listitem">Drawings</a>
+        <a href="#about" role="listitem">About</a>
+        <a href="mailto:{{COMPANY_EMAIL}}" role="listitem">Contact</a>
       </div>
-      <button class="mobile-toggle" aria-label="Open menu"
-        onclick="document.getElementById('mobile-menu').classList.add('open')">
-        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+
+      <!-- Mobile: hamburger opens full-screen overlay -->
+      <button class="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false"
+        onclick="openMobileMenu()">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
+          stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <line x1="0" y1="1" x2="22" y2="1"/>
           <line x1="0" y1="8" x2="22" y2="8"/>
           <line x1="0" y1="15" x2="22" y2="15"/>
         </svg>
       </button>
+
     </div>
   </nav>
 
   <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="mobile-close" aria-label="Close menu"
-      onclick="document.getElementById('mobile-menu').classList.remove('open')">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+  <div class="mobile-menu" id="mobile-menu"
+    role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <button class="mobile-close" aria-label="Close navigation menu"
+      onclick="closeMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <line x1="4" y1="4" x2="20" y2="20"/>
         <line x1="20" y1="4" x2="4" y2="20"/>
       </svg>
     </button>
-    <a href="#drawings" onclick="document.getElementById('mobile-menu').classList.remove('open')">Drawings</a>
-    <a href="#about" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
-    <a href="mailto:{{COMPANY_EMAIL}}" onclick="document.getElementById('mobile-menu').classList.remove('open')">Contact</a>
+    <a href="#drawings" onclick="closeMobileMenu()">Drawings</a>
+    <a href="#about"    onclick="closeMobileMenu()">About</a>
+    <a href="mailto:{{COMPANY_EMAIL}}" onclick="closeMobileMenu()">Contact</a>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════
-       SECTION 2: HERO
-  ════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN CONTENT WRAPPER
+       Wraps hero + services + about to satisfy semantic HTML requirements
+  ═══════════════════════════════════════════════════════════════ -->
   <main>
-    <section aria-label="Hero">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 2: HERO
+         Pattern C — Text-Bold: oversized serif heading, no image/gradient.
+         Headline clamp(3.2rem, 8.5vw, 7.5rem), one subtitle, one text-link CTA.
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="hero-section" aria-label="Hero — Architectural Drawings Marketplace">
       <div class="hero-wrap">
 
-        <p class="hero-eyebrow hero-animate">
+        <!-- Small-caps eyebrow label -->
+        <p class="hero-eyebrow hero-animate" aria-hidden="true">
           Architectural &amp; Interior Design Drawings — Marketplace
         </p>
 
+        <!-- Primary H1: oversized serif with italic contrast word -->
         <h1 class="hero-headline hero-animate stagger-1">
-          Skip the $5,000 architect fee. <em>Download instead.</em>
+          Skip the $5,000 architect fee.
+          <em>Download instead.</em>
         </h1>
 
+        <!-- Bottom row: sub-copy LEFT | email capture RIGHT -->
         <div class="hero-bottom-row hero-animate stagger-2">
 
-          <!-- Left: value proposition -->
+          <!-- Left: value proposition body copy -->
           <div>
             <p class="hero-sub">
-              Professionally-vetted floor plans, elevation drawings, and construction details —
-              <strong>$15 to $75 per file.</strong> Architects, contractors, and DIY homeowners
-              get instant access to the drawings they need, without the custom fee.
+              Professionally-vetted floor plans, elevation drawings, and construction
+              details — <strong>$15 to $75 per file.</strong> Architects, contractors,
+              and DIY homeowners get instant access to the drawings they need, without
+              the custom fee.
             </p>
           </div>
 
-          <!-- Right: email capture + pricing -->
+          <!-- Right: email capture form + pricing micro-stats -->
           <div class="hero-right-col">
-            <form class="waitlist-form" id="waitlist-form"
-              onsubmit="handleWaitlistSubmit(event)" aria-label="Join early access waitlist">
+
+            <!--
+              Email capture form.
+              Posts to /api/leads/collect with {email, slug, source_page}.
+              Error handling: shows error state, re-enables button on failure.
+              Success state: hides input, updates button text and status message.
+            -->
+            <form
+              class="waitlist-form"
+              id="waitlist-form"
+              onsubmit="handleWaitlistSubmit(event)"
+              aria-label="Get early access — enter your email"
+              novalidate>
               <div class="waitlist-row">
                 <input
                   class="waitlist-input"
                   type="email"
                   id="waitlist-email"
+                  name="email"
                   placeholder="Your email address"
                   required
                   autocomplete="email"
+                  inputmode="email"
                   aria-label="Email address"
+                  aria-required="true"
                 />
-                <button class="waitlist-btn" type="submit" id="waitlist-btn">
+                <button
+                  class="waitlist-btn"
+                  type="submit"
+                  id="waitlist-btn"
+                  aria-label="Get early access">
                   Get Early Access
                 </button>
               </div>
             </form>
-            <span class="waitlist-note" aria-live="polite" id="waitlist-status">
+
+            <!-- Status message: default hint, updated by JS on success/error -->
+            <span
+              class="waitlist-note"
+              aria-live="polite"
+              aria-atomic="true"
+              id="waitlist-status">
               Be first to browse the collection when we launch.
             </span>
 
-            <div class="hero-pricing-strip hero-animate stagger-4">
+            <!-- Pricing micro-stats: key numbers at a glance -->
+            <div class="hero-pricing-strip hero-animate stagger-4" aria-label="Key facts">
               <div class="hero-pricing-item">
-                <span class="hero-pricing-value">$15</span>
+                <span class="hero-pricing-value" aria-label="Starting from $15">$15</span>
                 <span class="hero-pricing-label">Per file, from</span>
               </div>
               <div class="hero-pricing-item">
-                <span class="hero-pricing-value">500+</span>
+                <span class="hero-pricing-value" aria-label="500 plus licensed drawings">500+</span>
                 <span class="hero-pricing-label">Licensed drawings</span>
               </div>
               <div class="hero-pricing-item">
-                <span class="hero-pricing-value">Instant</span>
+                <span class="hero-pricing-value" aria-label="Instant download">Instant</span>
                 <span class="hero-pricing-label">Download</span>
               </div>
             </div>
-          </div>
 
-        </div>
-      </div>
+          </div>
+        </div><!-- /hero-bottom-row -->
+      </div><!-- /hero-wrap -->
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
          SECTION 3: SERVICES / DRAWING TYPES
-    ════════════════════════════════════════════════════════ -->
-    <section class="services-section" id="drawings" aria-labelledby="services-heading">
+         Two-column text layout with thin hairline borders.
+         Per style guide: NOT cards — border lines only, no shadows/radius.
+    ═══════════════════════════════════════════════════════════════ -->
+    <section class="services-section" id="drawings"
+      aria-labelledby="services-heading">
 
+      <!-- Section header: index label + descriptive heading -->
       <div class="services-header reveal">
         <span class="section-label" aria-hidden="true">01 — Collection</span>
         <h2 id="services-heading" class="services-heading">
@@ -863,100 +1005,128 @@
         </h2>
       </div>
 
-      <div class="services-grid" role="list">
+      <!-- 2-column service grid, items divided by hairline borders -->
+      <div class="services-grid" role="list" aria-label="Drawing categories">
 
-        <!-- Floor Plans -->
-        <div class="service-item reveal" role="listitem">
+        <!-- 01: Floor Plans -->
+        <article class="service-item reveal" role="listitem">
           <span class="svc-num" aria-hidden="true">01</span>
           <div class="svc-content">
             <h3>Floor Plans</h3>
             <p>
-              Dimensioned, permit-ready floor plans for residential and light commercial spaces.
-              Studio layouts to multi-story homes — scaled and annotated to professional standards
-              that your contractor can build from day one.
+              Dimensioned, permit-ready floor plans for residential and light commercial
+              spaces. Studio layouts to multi-story homes — scaled and annotated to
+              professional standards that your contractor can build from day one.
             </p>
-            <span class="svc-price-tag">From $15 per file</span>
+            <span class="svc-price-tag" aria-label="Floor plans from $15 per file">
+              From $15 per file
+            </span>
           </div>
-        </div>
+        </article>
 
-        <!-- Elevation Drawings -->
-        <div class="service-item reveal reveal-delay-1" role="listitem">
+        <!-- 02: Elevation Drawings -->
+        <article class="service-item reveal reveal-delay-1" role="listitem">
           <span class="svc-num" aria-hidden="true">02</span>
           <div class="svc-content">
             <h3>Elevation Drawings</h3>
             <p>
-              Interior and exterior elevations that translate your vision into buildable detail.
-              Kitchen cabinetry, bathroom layouts, façade studies — precise drawings ready to
-              hand off to your contractor without revision rounds.
+              Interior and exterior elevations that translate vision into buildable detail.
+              Kitchen cabinetry, bathroom layouts, façade studies — precise drawings ready
+              to hand off to your contractor without revision rounds.
             </p>
-            <span class="svc-price-tag">From $20 per file</span>
+            <span class="svc-price-tag" aria-label="Elevation drawings from $20 per file">
+              From $20 per file
+            </span>
           </div>
-        </div>
+        </article>
 
-        <!-- Construction Details -->
-        <div class="service-item reveal reveal-delay-1" role="listitem">
+        <!-- 03: Construction Details -->
+        <article class="service-item reveal reveal-delay-1" role="listitem">
           <span class="svc-num" aria-hidden="true">03</span>
           <div class="svc-content">
             <h3>Construction Details</h3>
             <p>
-              Section cuts, connection details, and material call-outs that contractors trust on site.
-              Reduce requests for information, prevent costly errors, and build with confidence
-              from the first framing day.
+              Section cuts, connection details, and material call-outs that contractors
+              trust on site. Reduce requests for information, prevent costly errors, and
+              build with confidence from the first framing day.
             </p>
-            <span class="svc-price-tag">From $25 per file</span>
+            <span class="svc-price-tag" aria-label="Construction details from $25 per file">
+              From $25 per file
+            </span>
           </div>
-        </div>
+        </article>
 
-        <!-- Renovation Bundles -->
-        <div class="service-item reveal reveal-delay-2" role="listitem">
+        <!-- 04: Renovation Bundles -->
+        <article class="service-item reveal reveal-delay-2" role="listitem">
           <span class="svc-num" aria-hidden="true">04</span>
           <div class="svc-content">
             <h3>Renovation Bundles</h3>
             <p>
-              Curated drawing sets for the most common renovation scopes — kitchen remodels,
-              bathroom additions, ADU conversions. Everything you need in a single download,
-              priced for real budgets rather than custom architect rates.
+              Curated drawing sets for the most common renovation scopes — kitchen
+              remodels, bathroom additions, ADU conversions. Everything you need in
+              a single download, priced for real budgets rather than custom rates.
             </p>
-            <span class="svc-price-tag">From $49 per bundle</span>
+            <span class="svc-price-tag" aria-label="Renovation bundles from $49">
+              From $49 per bundle
+            </span>
           </div>
-        </div>
+        </article>
 
-      </div>
+      </div><!-- /services-grid -->
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════════════════════
          SECTION 4: ABOUT
-    ════════════════════════════════════════════════════════ -->
+         Dark background (var(--bg-dark)) for strong visual contrast.
+         Single-column editorial long-form text with pull-quote and stats.
+    ═══════════════════════════════════════════════════════════════ -->
     <section class="about-section" id="about" aria-labelledby="about-heading">
       <div class="about-inner">
 
+        <!-- Left sidebar: section label + sidebar quote (hidden on mobile) -->
         <div class="about-label-col reveal">
           <span class="section-label">02 — About</span>
-          <p class="about-sidebar-quote">
+          <p class="about-sidebar-quote" aria-hidden="true">
             "Architectural quality shouldn't be a privilege of large budgets."
           </p>
         </div>
 
+        <!-- Right: editorial body content -->
         <div class="about-body">
+
+          <!-- Lead paragraph: large serif, fully visible -->
           <p class="about-lead reveal reveal-delay-1" id="about-heading">
-            Custom architectural drawings cost between $2,000 and $10,000 — for projects that often don't justify the fee. {{COMPANY_NAME}} changes that equation entirely.
+            Custom architectural drawings cost between $2,000 and $10,000 — for
+            projects that often don't justify the fee. {{COMPANY_NAME}} changes that
+            equation entirely.
           </p>
 
+          <!-- Body paragraph 1 -->
           <p class="about-body-text reveal reveal-delay-2">
-            We've built a curated library of professionally-vetted drawings — reviewed by licensed architects, organized by project type, and priced for real budgets. Every file is ready to download the moment you purchase it. No back-and-forth, no waiting weeks, no minimum engagement.
+            We've built a curated library of professionally-vetted drawings — reviewed
+            by licensed architects, organized by project type, and priced for real
+            budgets. Every file is ready to download the moment you purchase it.
+            No back-and-forth, no waiting weeks, no minimum engagement.
           </p>
 
+          <!-- Pull-quote: the editorial centerpiece of the about section -->
           <div class="pull-quote reveal reveal-delay-2">
             <blockquote>
-              "The quality of your built environment shouldn't depend on the size of your architectural budget."
+              "The quality of your built environment shouldn't depend on the size of
+              your architectural budget."
             </blockquote>
           </div>
 
+          <!-- Body paragraph 2 -->
           <p class="about-body-text reveal reveal-delay-3">
-            Whether you're an architect sourcing a reference detail, a contractor pricing a renovation scope, or a homeowner planning a kitchen remodel — you'll find exactly what you need here. Instantly. Affordably. Professionally.
+            Whether you're an architect sourcing a reference detail, a contractor
+            pricing a renovation scope, or a homeowner planning a kitchen remodel —
+            you'll find exactly what you need here. Instantly. Affordably.
+            Professionally.
           </p>
 
-          <div class="about-stats reveal reveal-delay-3">
+          <!-- Stats row: 3 key figures at a glance -->
+          <div class="about-stats reveal reveal-delay-3" aria-label="Key statistics">
             <div class="stat-item">
               <span class="stat-number">500+</span>
               <span class="stat-label">Licensed drawings</span>
@@ -970,94 +1140,195 @@
               <span class="stat-label">Instant download</span>
             </div>
           </div>
-        </div>
 
-      </div>
+        </div><!-- /about-body -->
+      </div><!-- /about-inner -->
     </section>
+
   </main>
 
-  <!-- ═══════════════════════════════════════════════════════
-       SECTION 5: FOOTER (LAST element before </body>)
-  ════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 5: FOOTER
+       MUST be the very last element before </body>.
+       Minimal: logo + copyright + 3 links only.
+  ═══════════════════════════════════════════════════════════════ -->
   <footer role="contentinfo">
     <div class="footer-inner">
+
+      <!-- Brand wordmark -->
       <span class="footer-logo">{{COMPANY_NAME}}</span>
+
+      <!-- 3 footer links only -->
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#drawings">Collection</a>
         <a href="#about">About</a>
         <a href="mailto:{{COMPANY_EMAIL}}">Contact</a>
       </nav>
+
+      <!-- Copyright -->
       <span class="footer-copy">&copy; 2026 {{COMPANY_NAME}}. All rights reserved.</span>
+
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════════════
-       SCRIPTS
-  ════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════════════════════
+       SCRIPTS — all inline, no external dependencies
+  ═══════════════════════════════════════════════════════════════ -->
   <script>
-    // ─── Scroll Reveal Observer ─────────────────────────────────
-    (function () {
-      var observer = new IntersectionObserver(function (entries) {
+    /**
+     * ── Scroll Reveal Observer ──────────────────────────────────
+     * Watches all .reveal elements. When they enter the viewport,
+     * adds .visible class which triggers the CSS translateY(0) transition.
+     *
+     * Uses threshold: 0.07 so elements animate early (before fully in view),
+     * giving a smooth continuous scroll experience.
+     *
+     * Note: .reveal only uses translateY, never opacity:0 — content is
+     * always readable even if JS is blocked.
+     */
+    (function initScrollReveal() {
+      // Guard: skip if IntersectionObserver not supported (old browsers)
+      if (!window.IntersectionObserver) {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('visible');
+        });
+        return;
+      }
+
+      var revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target); // fire once, then stop watching
           }
         });
       }, { threshold: 0.07, rootMargin: '0px 0px -16px 0px' });
 
       document.querySelectorAll('.reveal').forEach(function (el) {
-        observer.observe(el);
+        revealObserver.observe(el);
       });
     })();
 
-    // ─── Nav shrink on scroll ────────────────────────────────────
-    (function () {
-      var nav = document.querySelector('nav');
+    /**
+     * ── Nav Scroll Behaviour ─────────────────────────────────────
+     * Adds .scrolled class to nav when page is scrolled past 60px.
+     * CSS .scrolled rule reduces top/bottom padding for a compact look.
+     * Uses passive: true on the listener for scroll performance.
+     */
+    (function initNavScroll() {
+      var nav = document.getElementById('main-nav');
+      if (!nav) return;
+
       window.addEventListener('scroll', function () {
-        if (window.scrollY > 60) {
-          nav.style.padding = '';
-        }
+        nav.classList.toggle('scrolled', window.scrollY > 60);
       }, { passive: true });
     })();
 
-    // ─── Waitlist Form ───────────────────────────────────────────
+    /**
+     * ── Mobile Menu ──────────────────────────────────────────────
+     * openMobileMenu / closeMobileMenu:
+     * Toggle the full-screen overlay and update aria-expanded on the button.
+     * Also prevents body scroll while overlay is open.
+     */
+    function openMobileMenu() {
+      var menu   = document.getElementById('mobile-menu');
+      var toggle = document.querySelector('.mobile-toggle');
+      if (menu)   menu.classList.add('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+    }
+
+    function closeMobileMenu() {
+      var menu   = document.getElementById('mobile-menu');
+      var toggle = document.querySelector('.mobile-toggle');
+      if (menu)   menu.classList.remove('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = ''; // restore scroll
+    }
+
+    // Close mobile menu on Escape key press (accessibility)
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+
+    /**
+     * ── Waitlist Form Submission ─────────────────────────────────
+     * Handles the email capture form.
+     *
+     * Flow:
+     *   1. Prevent default form submit
+     *   2. Validate email client-side (HTML required + type=email covers most cases)
+     *   3. Disable button + show loading state ("Joining...")
+     *   4. POST to /api/leads/collect with {email, slug, source_page}
+     *   5a. Success: hide input, update button text, update status message
+     *   5b. Error: re-enable button, show error message in status area
+     *
+     * Error cases handled:
+     *   - Network failure (fetch throws)
+     *   - API returns {success: false}
+     *   - Empty email (HTML5 required attribute + manual trim check)
+     */
     async function handleWaitlistSubmit(e) {
       e.preventDefault();
-      var email = document.getElementById('waitlist-email').value.trim();
-      var btn   = document.getElementById('waitlist-btn');
-      var status = document.getElementById('waitlist-status');
 
-      if (!email) return;
+      var emailInput = document.getElementById('waitlist-email');
+      var btn        = document.getElementById('waitlist-btn');
+      var status     = document.getElementById('waitlist-status');
+      var email      = emailInput ? emailInput.value.trim() : '';
 
-      btn.textContent = 'Joining...';
-      btn.disabled = true;
+      // Guard: don't submit empty email
+      if (!email) {
+        if (status) status.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      // Loading state
+      if (btn) {
+        btn.textContent = 'Joining...';
+        btn.disabled    = true;
+      }
 
       try {
         var res = await fetch('/api/leads/collect', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email: email,
-            slug: '{{COMPANY_SLUG}}',
+            email:       email,
+            slug:        '{{COMPANY_SLUG}}',
             source_page: 'home'
           })
         });
-        var data = await res.json();
 
-        if (data.success) {
-          btn.textContent = "You're on the list";
-          document.getElementById('waitlist-email').style.display = 'none';
-          status.textContent = "We'll notify you the moment the collection opens.";
+        // Parse JSON — handle non-JSON responses gracefully
+        var data;
+        try {
+          data = await res.json();
+        } catch (_parseErr) {
+          throw new Error('Invalid response from server');
+        }
+
+        if (data && data.success) {
+          // ── Success path ──────────────────────────────
+          if (btn)        btn.textContent = "You're on the list";
+          if (emailInput) emailInput.style.display = 'none';
+          if (status)     status.textContent = "We'll notify you the moment the collection opens.";
         } else {
+          // ── API returned failure ──────────────────────
+          throw new Error(data && data.error ? data.error : 'Submission failed');
+        }
+
+      } catch (err) {
+        // ── Network / unexpected error ────────────────────────
+        // Re-enable form so user can try again
+        if (btn) {
           btn.textContent = 'Try Again';
-          btn.disabled = false;
+          btn.disabled    = false;
+        }
+        if (status) {
           status.textContent = 'Something went wrong — please try again.';
         }
-      } catch (err) {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-        status.textContent = 'Something went wrong — please try again.';
+        // Log error for debugging (not shown to user)
+        console.error('[waitlist] Submission error:', err);
       }
     }
   </script>
